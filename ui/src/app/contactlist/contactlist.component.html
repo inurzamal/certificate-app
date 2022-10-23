@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>certification</title>
+</head>
+<body>
+
+  <div class="container" >
+    <div class="text-center my-5 display-6 text-secondary" *ngIf="contacts.length===0"> No Records </div>
+
+    <table class="table" *ngIf="!(contacts.length===0)">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Certification</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let contact of contacts">
+              <td>{{contact.cid}}</td>
+              <td>{{contact.name}}</td>
+              <td>
+                <p *ngFor= "let certification of contact.certifications">{{certification.cname}}</p>
+              </td> 
+              <td>
+                <p *ngFor= "let state of contact.certifications">{{state.cstatus}}</p>
+              </td>
+              <td>
+                <button class="btn btn-light btn-sm" (click)="editContact(contact.cid)">Edit</button>
+                &nbsp;
+                <button class="btn btn-light btn-sm" (click)="deleteContact(contact.cid)">Delete</button>
+                &nbsp;
+                <button class="btn btn-light btn-sm" (click)="addc(contact.cid)">Add-Certificate</button>
+              </td>
+          </tr> 
+      </tbody>
+    </table>
+
+  </div>
+  
+</body>
+</html>
+
+

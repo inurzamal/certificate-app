@@ -1,0 +1,8 @@
+softwares requirement: Java 17 or 11
+-------
+To run the java application:
+--> go to the folder or desktop where the jar is present
+--> open cmd and type the following command
+
+> java -jar myapp.jar
+

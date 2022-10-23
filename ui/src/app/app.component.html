@@ -1,0 +1,35 @@
+<!--########### NAV BAR STARTS HERE ##################################################### -->
+
+<nav class="navbar navbar-expand-sm navbar-dark mb-3" style="background-color: #2B547E;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Liberty Certification Tracker</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        
+      </ul>
+      <form class="d-sm-flex">
+        <a routerLink="create-contact" routerLinkActive="active" class="nav-link" href="#" ><button class="btn btn-success"> Add Employee</button></a>
+      </form>
+    </div> -->
+    <div class="d-sm-flex">
+      <a routerLink="create-contact" routerLinkActive="active" class="btn btn-sm btn-dark text-light nav-link">Add Employee</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- #####################NAV BAR ENDS HERE ############################################### -->
+
+<!-- MAIN CONTENT HERE -->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <span>All Rights Reserved 2022 @LM Certificate Tracker System</span>
+  </div>
+</footer>
