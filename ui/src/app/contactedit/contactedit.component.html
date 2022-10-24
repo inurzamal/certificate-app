@@ -1,3 +1,4 @@
+
 <div class="col-md-6 offset-md-3">
     <h4>Update Certificate</h4> <br>
     <form (ngSubmit)="updateContact()">
@@ -22,6 +23,15 @@
             [(ngModel)]="contact.name"
             >
         </div>
+
+        <br>
+        <div class="form-group">
+            <label>Select Certificate</label>
+            <select class="form-select" id="ccname"  (change)="onCertificateOptionChanged()">
+                <option *ngFor="let c of contact.certifications; let i=index;" value={{i}}>{{c.cname}}</option>
+            </select>
+        </div>
+
         <br>
         <div class="form-group">
             <label >Certification</label>
@@ -29,16 +39,9 @@
             class="form-control" 
             name="email" 
             id="email"
-            [(ngModel)]="contact.certifications[1].cname"
+            [(ngModel)]="contact.certifications[selectedCcnameId].cname"
             >
         </div>
-
-        <!-- <div class="form-group">
-            <label>Certification</label>
-            <select class="form-select" [(ngModel)]="selected" name="email">
-                <option *ngFor="let c of contact.certifications" [ngValue]="c.cname">{{c.cname}}</option>
-            </select>
-        </div> -->
 
         <br>
         <div class="form-group">
@@ -47,7 +50,7 @@
             class="form-control" 
             name="phone" 
             id="phone"
-            [(ngModel)]="contact.certifications[0].cstatus"
+            [(ngModel)]="contact.certifications[selectedCcnameId].cstatus"
             >
         </div>
         <br>

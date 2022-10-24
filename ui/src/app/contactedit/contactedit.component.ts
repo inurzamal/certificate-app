@@ -11,7 +11,7 @@ import { ContactService } from '../contact.service';
 export class ContacteditComponent implements OnInit {
 
   // contact:Contact=new Contact();
-  contact:Contact = {
+  contact: Contact = {
     cid: 0,
     name: '',
     certifications: [
@@ -25,44 +25,53 @@ export class ContacteditComponent implements OnInit {
 
   // selected:string='';
   // index:number= this.contact.certifications.findIndex(x => x.cname === this.selected);
-  
 
-  id:number=0;
-  constructor(private contactService:ContactService,
-    private router:Router,private activeRouter:ActivatedRoute) { }
+
+  id: number = 0;
+  ccname: any;
+  selectedCcnameId: any = 0;
+  constructor(private contactService: ContactService,
+    private router: Router, private activeRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getContact();
+    this.ccname = <HTMLSelectElement>document.getElementById('ccname');
+    this.selectedCcnameId = 0;
   }
 
 
-  getContact(){
-    this.id=this.activeRouter.snapshot.params['id'];
-    console.log("UPDATED ID ::"+this.id);
+  getContact() {
+    this.id = this.activeRouter.snapshot.params['id'];
+    console.log("UPDATED ID ::" + this.id);
     this.contactService.findContact(this.id).subscribe(
-      data=>{
+      data => {
         console.log("GETTING A CONTACT..");
         console.log(data);
-        this.contact=data;
+        this.contact = data;
       },
-      error=>{
+      error => {
         console.log("SOMETHING WENT WRONG DURING GETTING A CONTACT..");
-        console.log(error);  
+        console.log(error);
       }
     );
   }
-  updateContact(){
+  updateContact() {
     console.log("UPDATED ..");
     this.contactService.createContact(this.contact).subscribe(
-      data=>{
+      data => {
         console.log("UPDATING A CONTACT..");
         console.log(data);
         this.router.navigate(['/contacts'])
       },
-      error=>{
+      error => {
         console.log("SOMETHING WENT WRONG DURING UPDATING A CONTACT..");
         console.log(error);
       });
+  }
+  onCertificateOptionChanged() {
+    if (this.ccname.value != null) {
+      this.selectedCcnameId = this.ccname.value;
     }
 
+  }
 }
