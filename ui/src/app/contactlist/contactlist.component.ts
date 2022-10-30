@@ -29,13 +29,21 @@ export class ContactlistComponent implements OnInit {
     );
   }
 
+  activeId:number=0;
+  getActiveId(id:number){
+    this.activeId=id;
+
+  }
+
   //remove a contact
   deleteContact(id:number){
-    if(confirm('Want to delete the record?'))
+    // if(confirm('Want to delete the record?'))
     this.contactService.removeContact(id).subscribe(
       data=>{
         console.log(data);
         this.getAllContacts();
+        let ref = document.getElementById('cancel')
+        ref?.click();
       },
       error=>{
         console.log(error);

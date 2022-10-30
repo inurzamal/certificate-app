@@ -32,17 +32,37 @@
                 <p *ngFor= "let state of contact.certifications">{{state.cstatus}}</p>
               </td>
               <td>
-                <button class="btn btn-light btn-sm" (click)="editContact(contact.cid)">Edit</button>
+                <button class="btn btn-outline-secondary btn-sm" (click)="editContact(contact.cid)">Edit</button>
                 &nbsp;
-                <button class="btn btn-light btn-sm" (click)="deleteContact(contact.cid)">Delete</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-danger btn-sm" (click)="getActiveId(contact.cid)">Delete</button>
                 &nbsp;
-                <button class="btn btn-light btn-sm" (click)="addc(contact.cid)">Add-Certificate</button>
+                <button class="btn btn-outline-info btn-sm" (click)="addc(contact.cid)">Add-Certificate</button>
               </td>
           </tr> 
       </tbody>
     </table>
 
   </div>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the Employee?
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="deleteContact(activeId)" data-dismiss="modal">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
   
 </body>
 </html>

@@ -23,20 +23,21 @@ export class ContacteditComponent implements OnInit {
     ]
   }
 
-  // selected:string='';
-  // index:number= this.contact.certifications.findIndex(x => x.cname === this.selected);
-
 
   id: number = 0;
-  ccname: any;
-  selectedCcnameId: any = 0;
+  ccname: any; //id of select
+  selectedCcnameId: any = 0; //index of ccname
   constructor(private contactService: ContactService,
     private router: Router, private activeRouter: ActivatedRoute) { }
+
+  backClicked() {
+    this.router.navigate(['/contacts'])
+  }
 
   ngOnInit(): void {
     this.getContact();
     this.ccname = <HTMLSelectElement>document.getElementById('ccname');
-    this.selectedCcnameId = 0;
+    this.selectedCcnameId = 0; // selectedCcnameId is storing index of ccname
   }
 
 

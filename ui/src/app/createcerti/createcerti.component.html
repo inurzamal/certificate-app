@@ -1,31 +1,45 @@
 <div class="col-md-6 offset-md-3">
-    <h4>Add Certificate</h4> <br>
+    <h4 class="text-center">Add Certificate</h4> <br>
     <form (ngSubmit)="onSubmit()">
 
-        <br>
         <div class="form-group">
+            <label >Name</label>
+            <input type="text" 
+            class="form-control mt-1" 
+            name="name" 
+            id="name"
+            [(ngModel)]="contact.name" readonly
+            >
+        </div>
+
+        <div class="form-group mt-4">
             <label >Certificate Name</label>
             <input type="text" 
-            class="form-control" 
+            class="form-control mt-1" 
             name="cname" 
             id="cname"
             [(ngModel)]="certifications.cname"
             >
         </div>
-        <br>
-        <div class="form-group">
+
+        <div class="form-group mt-3">
             <label >Status</label>
             <input type="text" 
-            class="form-control" 
+            class="form-control mt-1" 
             name="phone" 
             id="phone"
             [(ngModel)]="certifications.cstatus"
             >
         </div>
-        <br>
-        <div>
+
+
+        <div class="mt-4">
             <button class="btn btn-primary" type="submit">
                 Add
+            </button>
+            &nbsp;
+            <button class="btn btn-secondary" (click)="backClicked()">
+                cancel
             </button>
         </div>
     </form>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Contact } from '../contact';
+import { Certification, Contact } from '../contact';
 import { ContactService } from '../contact.service';
 
 @Component({
@@ -45,6 +45,10 @@ export class CreatecontactComponent implements OnInit {
   }
   redirectToContactList(){
     this.router.navigate(['/contacts']);
+  }
+
+  backClicked() {
+    this.router.navigate(['/contacts'])
   }
 
 }

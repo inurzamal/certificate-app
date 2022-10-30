@@ -1,9 +1,9 @@
 
 <div class="col-md-6 offset-md-3">
-    <h4>Update Certificate</h4> <br>
+    <h4 class="text-center">Update Certificate</h4>
     <form (ngSubmit)="updateContact()">
 
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label >Id</label>
             <input type="text" 
             class="form-control" 
@@ -13,8 +13,7 @@
             readonly>
         </div>
 
-        <br>
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label >Name</label>
             <input type="text" 
             class="form-control" 
@@ -24,16 +23,14 @@
             >
         </div>
 
-        <br>
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label>Select Certificate</label>
             <select class="form-select" id="ccname"  (change)="onCertificateOptionChanged()">
                 <option *ngFor="let c of contact.certifications; let i=index;" value={{i}}>{{c.cname}}</option>
             </select>
         </div>
 
-        <br>
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label >Certification</label>
             <input type="text" 
             class="form-control" 
@@ -43,8 +40,7 @@
             >
         </div>
 
-        <br>
-        <div class="form-group">
+        <div class="form-group mt-2">
             <label >Status</label>
             <input type="text" 
             class="form-control" 
@@ -53,10 +49,13 @@
             [(ngModel)]="contact.certifications[selectedCcnameId].cstatus"
             >
         </div>
-        <br>
         <div>
-            <button class="btn btn-primary" type="submit">
+            <button class="btn btn-sm btn-primary mt-3" type="submit">
                 Update
+            </button>
+            &nbsp;
+            <button class="btn btn-sm btn-secondary mt-3" (click)="backClicked()">
+                cancel
             </button>
         </div>
     </form>
