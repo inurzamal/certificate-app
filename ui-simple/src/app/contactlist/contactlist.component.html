@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>certification</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="text-center my-5 display-6 text-secondary" *ngIf="contacts.length===0"> No Records </div>
+
+    <table class="table text-center" *ngIf="!(contacts.length===0)">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Certification</th>
+          <th>Status</th>
+          <th></th>
+          <th class="text-left">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts; let i = index;">
+          <td>{{contact.cid}}</td>
+          <td>{{contact.name}}</td>
+
+          <td>
+            <p *ngFor="let certification of contact.certifications">{{certification.cname}}</p>
+          </td>
+          <td>
+            <p *ngFor="let state of contact.certifications">{{state.cstatus}}
+            </p>
+
+          </td>
+          <td class="text-right">
+            <p *ngFor="let state of contact.certifications">
+              <span *ngIf="contact.certifications.length>1"
+                class="btn btn-outline-danger btn-sm material-symbols-outlined" data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                (click)="activeCertificateId = state.idx; selectedDeleteOption = 'Certificate'">delete</span>
+
+            </p>
+          </td>
+          <td class="text-left">
+
+            <button class="btn btn-outline-secondary btn-sm" (click)="editContact(contact.cid)">Edit</button>
+            &nbsp;
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              class="btn btn-outline-danger btn-sm"
+              (click)="activeEmployeeId = contact.cid; selectedDeleteOption = 'Employee'">Delete</button>
+            &nbsp;
+            <button class="btn btn-outline-info btn-sm" (click)="addc(contact.cid)">Add-Certificate</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete {{selectedDeleteOption}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <p class="text-danger mt-2">Are you sure you want to delete the {{selectedDeleteOption}}?</p>
+
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary"
+            (click)="(selectedDeleteOption==='Certificate')?deleteCertificate():deleteContact()"
+            data-dismiss="modal">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
